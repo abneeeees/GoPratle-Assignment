@@ -1,0 +1,27 @@
+{
+  "name": "gopratle-requirement-flow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-step requirement posting flow (Next.js + Express + MongoDB)",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace backend",
+    "dev:web": "npm run dev --workspace frontend",
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "typecheck": "npm run typecheck --workspace backend && npm run typecheck --workspace frontend",
+    "test": "npm run test --workspace backend && npm run test --workspace frontend",
+    "seed": "npm run seed --workspace backend",
+    "db:up": "docker compose up -d mongo",
+    "db:down": "docker compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
