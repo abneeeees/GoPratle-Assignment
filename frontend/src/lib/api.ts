@@ -2,10 +2,9 @@ import type { Category } from "./constants";
 import type { ListMeta, Requirement, Stats } from "./types";
 import type { RequirementPayload } from "./schemas";
 
-export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000").replace(
-  /\/+$/,
-  "",
-);
+export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000")
+  .replace(/\/+$/, "")
+  .replace(/\/api$/, "");
 
 export class ApiClientError extends Error {
   readonly status: number;
